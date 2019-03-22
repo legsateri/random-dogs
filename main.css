@@ -41,3 +41,7 @@ p {
     line-height: 0;
     padding-bottom: 30px;
 }
+
+.results-imgs {
+    max-width: 450px;
+}
