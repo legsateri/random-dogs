@@ -2,20 +2,21 @@
 
 //GET Request
 function getDogImages(numImg) {
+    console.log(`https://dog.ceo/api/breeds/image/random/${numImg}`)
     fetch(`https://dog.ceo/api/breeds/image/random/${numImg}`)
         .then(response => response.json())
-        .then(responseJson => displayResults(responseJson, numImg))
+        .then(responseJson => showResults(responseJson, numImg))
         .catch(error => alert("Something's gone wrong, try again later."));
 }
 
 //Displays The Results
-function showResults(responseJson, numImg) {
-    console.log(responseJson.message);
+function showResults(responseJson) {
+    console.log(responseJson);
     $('.results').append(`<h2>So cute!</h2>`);
-    for (let i=0; i < numImg; i++) {
+    for (let i=0; i < responseJson.message.length; i++) {
+        $('.results').removeClass('hidden');
         $('.results').append(`<img src="${responseJson.message[i]}" class="results-imgs">`);
     }
-    $('.results').removeClass('hidden');
 }
 
 //Event Listener On Form Submission
